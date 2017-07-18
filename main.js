@@ -20,7 +20,7 @@ function loadInfo() {
     //  BASICS
     basicsInfo = `<div><span>Name: </span>${data.name}<br />
             <span>Github URL:</span> <a href="${data.html_url}">GithubDiana</a><br />
-            <span>Email:</span><br />
+            <span>Email:</span> blah@blah.com<br />
             <span>Company:</span> ${data.company}<br />
             <span>Website:</span> <a href="${data.blog}">Don't have one</a></div>`
 
