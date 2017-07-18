@@ -3,13 +3,33 @@ let bioInfo = document.getElementById("basics");
 let story = document.getElementById("story");
 let imgDiv = document.getElementById("pic");
 
-let request = new XMLHttpRequest();
-request.addEventListener("load", loadInfo);
-request.open('GET', 'https://api.github.com/users/dibarra88');
-request.send();
+// let request = new XMLHttpRequest();
+// request.addEventListener("load", loadInfo);
+// request.open('GET', 'https://api.github.com/users/dibarra88');
+// request.send();
 
-function loadInfo() {
-    let data = JSON.parse(this.responseText);
+fetch("https://api.github.com/users/dibarra88")
+  // Data is fetched and we get a promise.
+  .then(
+    // The promise returns a response from the server.
+    function(response) {
+      // We process the response accordingly.
+      if (response.status !== 200) {
+        console.log(response.status);
+        return;
+      }
+      response.json().then(function(data) {
+        loadInfo(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log("Fetch Error :-S", err);
+  });
+
+
+function loadInfo(data) {
+   // let data = JSON.parse(this.responseText);
     let basicsInfo = '';
     let storyContent = '';
     let imgURL = '';
